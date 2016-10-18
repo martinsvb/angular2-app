@@ -1,0 +1,30 @@
+.docs {
+    .classHeader {
+        font-size: $font-size-sm;
+        color: $gray-light;
+    }
+    .panel {
+        border-radius: $border-radius;
+    }
+    .panel-heading h4 a {
+        text-decoration: none;
+        &:hover {
+            div {
+                background: lighten($brand-success, 35%);
+            }
+        }
+    }
+    .divider {
+        margin-bottom: .2 rem;
+    }
+    .full button span {
+        background-color: limegreen;
+        border-radius: 32px;
+        color: black;
+    }
+    .partially button span {
+        background-color: orange;
+        border-radius: 32px;
+        color: black;
+    }
+}

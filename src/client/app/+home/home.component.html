@@ -1,0 +1,14 @@
+<div class="container">
+  
+  <div class="jumbotron">
+    <h1>Welcome in CRM system</h1>
+  </div>
+
+  <div class="row" *ngIf="user?.role == 'guest'">
+    <div class="col-md-12">
+      <button class="btn btn-success" href="#" [routerLink]="['/login']">{{ tr?.login }}</button>
+      <button class="btn btn-default" href="#" [routerLink]="['/register']">{{ tr?.register }}</button>
+    </div>
+  </div>
+
+</div>

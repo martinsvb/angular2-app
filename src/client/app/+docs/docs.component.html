@@ -1,0 +1,37 @@
+<div class="container">
+  <accordion *ngFor='let namespace of namespaces' [closeOthers]="true">
+    <accordion-group *ngFor='let namespaceClass of docs[namespace]' [isOpen]="false">
+
+      <div accordion-heading>
+        <p><span class="classHeader">ClassName:</span> <span class="label label-default">{{namespaceClass.className}}</span></p>
+        <pre class="classHeader">Namespace: {{namespace}}</pre>
+      </div>
+
+        <div *ngIf="namespaceClass.parent" class="classDescription">
+          <h5>Parent: <span class="label label-default">{{namespaceClass.parent}}</span></h5>
+        </div>
+
+        <div *ngIf='namespaceClass.comment'>
+          <h5>Decription:</h5>
+          <pre class="classHeader">{{namespaceClass.comment}}</pre>
+        </div>
+
+        <div *ngIf="namespaceClass.methods" class="classDescription">
+          <h5>Methods:</h5>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor='let method of namespaceClass.methods'>
+              <pre *ngIf='method.comment' class="classHeader">{{method.comment}}</pre>
+              <p><span [ngClass]="{
+              'text-success': method.type=='Public',
+              'text-warning': method.type=='Protected',
+              'text-danger': method.type=='Private'}">{{method.type}}</span> {{method.name}}
+              (<span *ngIf='method.params'><span *ngFor='let param of method.params; let last=last'>{{param}}{{last ? '' : ', '}}</span></span>)
+              </p>
+            </li>
+          </ul>
+        </div>
+
+    </accordion-group>
+    <hr class="divider"/>
+  </accordion>
+</div>

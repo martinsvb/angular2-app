@@ -1,0 +1,94 @@
+.header {
+    background: $brand-back;
+    @include app-shadow(0, .2rem, .2rem, -.1rem);
+    margin-bottom: 1rem;
+}
+
+.app-nav {
+    
+    /** Mobile first */
+    margin: 1rem 0 .5rem 0;
+    &-link {
+        display: inline-block;
+        line-height: 2.9rem;
+        text-align: center;
+        margin-right: .5rem;
+        font-size: 1.2rem;
+        color: $gray;
+        border-radius: 50%;
+        background: #fff;
+        &-ico {
+            font-size: 1.2rem;
+        }
+        &-text {
+            display: none;
+        }
+        &:hover,
+        &.active-link {
+            text-decoration: none;
+            color: $gray-lightest;
+            background: $gray;
+        }
+    }
+    
+    /** Only mobile */
+    @include media-breakpoint-down(md) {
+        &-link {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+
+    /** Medium screens */
+    @include media-breakpoint-up(md) {
+        &-link {
+            padding: .3rem .8rem;
+            border-radius: .2rem;
+            &-text {
+                display: inline-block;
+                padding: 0 .2rem;
+            }
+        }
+    }
+}
+
+.right-box {
+    float: right;
+}
+
+.lang-nav,
+.user-nav {
+
+    &-name {
+        display: none;
+    }
+    &-name-mobile {
+        display: inline-block;
+    }
+
+    /** Medium screens */
+    @include media-breakpoint-up(md) {
+        &-name {
+            display: inline-block;
+        }
+        &-name-mobile {
+            display: none;
+        }
+    }
+
+    a: {
+        line-height: 2.9rem;
+    }
+
+    .dropdown-menu {
+        right: 10px;
+    }
+}
+
+.lang-nav {
+
+    &-img {
+        width: 1.5rem;
+        height: auto;
+    }
+}

@@ -1,0 +1,123 @@
+
+// Normalize
+@import "../../../node_modules/bootstrap/scss/_normalize";
+
+// Variables
+@import "./_variables";
+
+// Bootstrap
+@import
+"../../../node_modules/bootstrap/scss/bootstrap",
+"../../../node_modules/bootstrap/scss/bootstrap-flex",
+"../../../node_modules/bootstrap/scss/bootstrap-grid",
+"../../../node_modules/bootstrap/scss/bootstrap-reboot";
+
+// components
+@import
+"../../../node_modules/bootstrap/scss/_alert",
+"../../../node_modules/bootstrap/scss/_animation",
+"../../../node_modules/bootstrap/scss/_breadcrumb",
+"../../../node_modules/bootstrap/scss/_button-group",
+"../../../node_modules/bootstrap/scss/_buttons",
+"../../../node_modules/bootstrap/scss/_card",
+"../../../node_modules/bootstrap/scss/_carousel",
+"../../../node_modules/bootstrap/scss/_close",
+"../../../node_modules/bootstrap/scss/_code",
+"../../../node_modules/bootstrap/scss/_custom-forms",
+"../../../node_modules/bootstrap/scss/_custom",
+"../../../node_modules/bootstrap/scss/_dropdown",
+"../../../node_modules/bootstrap/scss/_forms",
+"../../../node_modules/bootstrap/scss/_grid",
+"../../../node_modules/bootstrap/scss/_images",
+"../../../node_modules/bootstrap/scss/_input-group",
+"../../../node_modules/bootstrap/scss/_jumbotron",
+"../../../node_modules/bootstrap/scss/_list-group",
+"../../../node_modules/bootstrap/scss/_media",
+"../../../node_modules/bootstrap/scss/_mixins",
+"../../../node_modules/bootstrap/scss/_modal",
+"../../../node_modules/bootstrap/scss/_navbar",
+"../../../node_modules/bootstrap/scss/_nav",
+"../../../node_modules/bootstrap/scss/_normalize",
+"../../../node_modules/bootstrap/scss/_pagination",
+"../../../node_modules/bootstrap/scss/_popover",
+"../../../node_modules/bootstrap/scss/_print",
+"../../../node_modules/bootstrap/scss/_progress",
+"../../../node_modules/bootstrap/scss/_reboot",
+"../../../node_modules/bootstrap/scss/_responsive-embed",
+"../../../node_modules/bootstrap/scss/_tables",
+"../../../node_modules/bootstrap/scss/_tags",
+"../../../node_modules/bootstrap/scss/_tooltip",
+"../../../node_modules/bootstrap/scss/_type",
+"../../../node_modules/bootstrap/scss/_utilities";
+
+// Mixins
+@import
+"../../../node_modules/bootstrap/scss/mixins/_alert",
+"../../../node_modules/bootstrap/scss/mixins/_background-variant",
+"../../../node_modules/bootstrap/scss/mixins/_border-radius",
+"../../../node_modules/bootstrap/scss/mixins/_breakpoints",
+"../../../node_modules/bootstrap/scss/mixins/_buttons",
+"../../../node_modules/bootstrap/scss/mixins/_cards",
+"../../../node_modules/bootstrap/scss/mixins/_clearfix",
+"../../../node_modules/bootstrap/scss/mixins/_forms",
+"../../../node_modules/bootstrap/scss/mixins/_gradients",
+"../../../node_modules/bootstrap/scss/mixins/_grid-framework",
+"../../../node_modules/bootstrap/scss/mixins/_grid",
+"../../../node_modules/bootstrap/scss/mixins/_hover",
+"../../../node_modules/bootstrap/scss/mixins/_image",
+"../../../node_modules/bootstrap/scss/mixins/_list-group",
+"../../../node_modules/bootstrap/scss/mixins/_lists",
+"../../../node_modules/bootstrap/scss/mixins/_navbar-align",
+"../../../node_modules/bootstrap/scss/mixins/_nav-divider",
+"../../../node_modules/bootstrap/scss/mixins/_pagination",
+"../../../node_modules/bootstrap/scss/mixins/_progress",
+"../../../node_modules/bootstrap/scss/mixins/_pulls",
+"../../../node_modules/bootstrap/scss/mixins/_reset-filter",
+"../../../node_modules/bootstrap/scss/mixins/_reset-text",
+"../../../node_modules/bootstrap/scss/mixins/_resize",
+"../../../node_modules/bootstrap/scss/mixins/_screen-reader",
+"../../../node_modules/bootstrap/scss/mixins/_size",
+"../../../node_modules/bootstrap/scss/mixins/_tab-focus",
+"../../../node_modules/bootstrap/scss/mixins/_table-row",
+"../../../node_modules/bootstrap/scss/mixins/_tag",
+"../../../node_modules/bootstrap/scss/mixins/_text-emphasis",
+"../../../node_modules/bootstrap/scss/mixins/_text-hide",
+"../../../node_modules/bootstrap/scss/mixins/_text-truncate";
+
+// Utilities
+@import
+"../../../node_modules/bootstrap/scss/utilities/_background",
+"../../../node_modules/bootstrap/scss/utilities/_clearfix",
+"../../../node_modules/bootstrap/scss/utilities/_display",
+"../../../node_modules/bootstrap/scss/utilities/_flex",
+"../../../node_modules/bootstrap/scss/utilities/_pulls",
+"../../../node_modules/bootstrap/scss/utilities/_screenreaders",
+"../../../node_modules/bootstrap/scss/utilities/_spacing",
+"../../../node_modules/bootstrap/scss/utilities/_text",
+"../../../node_modules/bootstrap/scss/utilities/_visibility";
+
+// Font awesome
+@import
+"./_variables-font-awesome",
+"../../../node_modules/font-awesome/scss/mixins",
+"../../../node_modules/font-awesome/scss/path",
+"../../../node_modules/font-awesome/scss/core",
+"../../../node_modules/font-awesome/scss/larger",
+"../../../node_modules/font-awesome/scss/fixed-width",
+"../../../node_modules/font-awesome/scss/list",
+"../../../node_modules/font-awesome/scss/bordered-pulled",
+"../../../node_modules/font-awesome/scss/animated",
+"../../../node_modules/font-awesome/scss/rotated-flipped",
+"../../../node_modules/font-awesome/scss/stacked",
+"../../../node_modules/font-awesome/scss/icons",
+"../../../node_modules/font-awesome/scss/screen-reader";
+
+// Custom mixins
+@import "./_mixins";
+
+// Main content styles
+@import "./content";
+
+// Application components
+@import "../app/+docs/docs.component";
+@import "../app/shared/navbar/navbar.component";

@@ -1,0 +1,14 @@
+/* Application mixins */
+
+/* offset-x | offset-y | blur-radius | spread-radius | color */
+@mixin app-shadow($x, $y, $blur, $spread) {
+    -webkit-box-shadow: $x $y $blur $spread rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:    $x $y $blur $spread rgba(0, 0, 0, 0.5);
+    box-shadow:         $x $y $blur $spread rgba(0, 0, 0, 0.5);
+}
+
+@mixin width-calc($width, $short) {
+    width: -webkit-calc($width - $short);
+    width:    -moz-calc($width - $short);
+    width:         calc($width - $short);
+}

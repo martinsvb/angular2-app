@@ -1,0 +1,124 @@
+html, body, .container-table {
+    height: 100%;
+}
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.row {
+    @include make-row();
+    margin-bottom: .5rem;
+}
+
+.cleaner {
+    clear: both;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.blockEl {
+    display: block;
+}
+
+.pull-left {
+    @extend .pull-left;
+    margin-right: .8rem;
+}
+
+h1 {
+    color: $gray-light;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    display: inline-block;
+}
+
+h1:first-letter,
+h2:first-letter,
+h3:first-letter,
+h4:first-letter,
+h5:first-letter,
+h6:first-letter,
+label:first-letter,
+p:first-letter,
+button:first-letter,
+th:first-letter {
+    text-transform: uppercase;
+}
+
+.container {
+    /** Only mobile */
+    @include media-breakpoint-down(md) {
+        @include width-calc(100%, 2rem);
+        margin: 0 1rem;
+        padding: 0;
+    }
+}
+
+input {
+    margin-bottom: .2rem;
+}
+
+.ng-valid[required] {
+    border-left: .3rem solid $brand-success;
+}
+.ng-invalid {
+    border-left: .3rem solid $brand-danger;
+}
+input[type="text"].ng-pristine,
+input[type="number"].ng-pristine,
+input[type="password"].ng-pristine {
+    border-left: $input-btn-border-width solid $input-group-addon-border-color;
+    &:focus {
+        border-left: $input-btn-border-width solid $input-border-focus;
+    }
+}
+
+.input-group-addon {
+    padding-right: 1.5rem;
+}
+
+label,
+input[type="checkbox"],
+.showPointer {
+    cursor: pointer !important;
+}
+
+/** Bootstrap responsive table hack */
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+
+.active {
+    background: $brand-success;
+}
+.disabled {
+    background: $brand-danger;
+}
+
+.form-check-span {
+    margin: 0 0 .5rem .2rem;
+}
+
+label.btn {
+    border: 1px solid $input-border-color !important;
+}
+label.btn[ng-reflect-model="true"] {
+    background: $brand-success !important;
+}
+label.btn[ng-reflect-model="false"] {
+    background: $brand-danger !important;
+}

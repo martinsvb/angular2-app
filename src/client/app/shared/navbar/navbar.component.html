@@ -1,0 +1,73 @@
+<!--
+<div class="container-fluid header">
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="app-nav">
+        <a class="app-nav-link" title="{{ tr?.home | uppercase }}" [routerLink]="['/']" [routerLinkActive]="['active-link']">
+          <i class="fa fa-home app-nav-link-ico" aria-hidden="true"></i><span class="app-nav-link-text">{{ tr?.home | uppercase }}</span>
+        </a>
+        <a class="app-nav-link" *ngIf="showLink('news')" title="{{ tr?.news | uppercase }}" [routerLink]="['/news']" [routerLinkActive]="['active-link']">
+          <i class="fa fa-edit app-nav-link-ico" aria-hidden="true"></i><span class="app-nav-link-text">{{ tr?.news | uppercase }}</span>
+        </a>
+        <a class="app-nav-link" *ngIf="showLink('company')" title="{{ tr?.companies | uppercase }}" [routerLink]="['/companies']" [routerLinkActive]="['active-link']">
+          <i class="fa fa-building app-nav-link-ico" aria-hidden="true"></i><span class="app-nav-link-text">{{ tr?.companies | uppercase }}</span>
+        </a>
+        <a class="app-nav-link" *ngIf="showLink('module')" title="{{ tr?.modules | uppercase }}" [routerLink]="['/modules']" [routerLinkActive]="['active-link']">
+          <i class="fa fa-briefcase app-nav-link-ico" aria-hidden="true"></i><span class="app-nav-link-text">{{ tr?.modules | uppercase }}</span>
+        </a>
+        <a class="app-nav-link" *ngIf="showLink('role')" title="{{ tr?.roles | uppercase }}" [routerLink]="['/roles']" [routerLinkActive]="['active-link']">
+          <i class="fa fa-cubes app-nav-link-ico" aria-hidden="true"></i><span class="app-nav-link-text">{{ tr?.roles | uppercase }}</span>
+        </a>
+        <a class="app-nav-link" *ngIf="showLink('user')" title="{{ tr?.users | uppercase }}" [routerLink]="['/users']" [routerLinkActive]="['active-link']">
+          <i class="fa fa-users app-nav-link-ico" aria-hidden="true"></i><span class="app-nav-link-text">{{ tr?.users | uppercase }}</span>
+        </a>
+        <a class="app-nav-link" *ngIf="showLink('docs')" title="docs" [routerLink]="['/docs']" [routerLinkActive]="['active-link']">
+          <i class="fa fa-book app-nav-link-ico" aria-hidden="true"></i><span class="app-nav-link-text">DOCS</span>
+        </a>
+
+        <div class="right-box">
+          <div class="dropdown user-nav">
+            <a class="dropdown-toggle" href="#" id="userDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user" aria-hidden="true"></i><span class="user-nav-name">&nbsp;{{ user?.name }}</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="userDropDown" *ngIf="user?.role == 'guest'">
+              <span class="user-nav-name-mobile">{{ user?.name }}</span>
+              <a class="dropdown-item" href="#" [routerLink]="['/login']">{{ tr?.login }}</a>
+              <a class="dropdown-item" href="#" [routerLink]="['/register']">{{ tr?.register }}</a>
+            </div>
+            <div class="dropdown-menu" aria-labelledby="userDropDown" *ngIf="user?.role == 'user' || user?.role == 'admin'">
+              <span class="user-nav-name-mobile">{{ user?.name }}</span>
+              <a class="dropdown-item" href="#" [routerLink]="['/profile']">{{ tr?.profile }}</a>
+              <a class="dropdown-item" href="#" (click)="logout()">{{ tr?.logout }}</a>
+            </div>
+          </div>
+
+          <div class="dropdown lang-nav">
+              <a class="dropdown-toggle" title="{{ tr[lang] }}" href="#" id="langDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src='/assets/img/flags/{{lang}}.png' class="img-rounded lang-nav-img" /><span class="lang-nav-name">&nbsp;{{ tr[lang] }}</span></a>
+              <div class="dropdown-menu" aria-labelledby="langDropDown">
+              <a [hidden]="lang=='en'" (click)="translation('en')" class="dropdown-item" title="{{ tr?.english }}" href="" id="langDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src='/assets/img/flags/en.png' class="img-rounded lang-nav-img" /><span class="lang-nav-name">&nbsp;{{ tr?.english }}</span></a>
+              <a [hidden]="lang=='cz'" (click)="translation('cz')" class="dropdown-item" title="{{ tr?.czech }}" href="" id="langDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src='/assets/img/flags/cz.png' class="img-rounded lang-nav-img" /><span class="lang-nav-name">&nbsp;{{ tr?.czech }}</span></a>
+              <a [hidden]="lang=='sk'" (click)="translation('sk')" class="dropdown-item" title="{{ tr?.slovak }}" href="" id="langDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src='/assets/img/flags/sk.png' class="img-rounded lang-nav-img" /><span class="lang-nav-name">&nbsp;{{ tr?.slovak }}</span></a>
+              </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+-->
+
+<div class="container-fluid header">
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="app-nav">
+        <a class="app-nav-link" title="{{ tr?.home | uppercase }}" [routerLink]="['/']" [routerLinkActive]="['active-link']">
+          <i class="fa fa-home app-nav-link-ico" aria-hidden="true"></i><span class="app-nav-link-text">{{ tr?.home | uppercase }}</span>
+        </a>
+        <a class="app-nav-link" title="docs" [routerLink]="['/docs']" [routerLinkActive]="['active-link']">
+          <i class="fa fa-book app-nav-link-ico" aria-hidden="true"></i><span class="app-nav-link-text">DOCS</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+</div>
