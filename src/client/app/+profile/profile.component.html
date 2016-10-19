@@ -1,0 +1,79 @@
+<div class="container">
+    <h1>{{ tr?.profile }}</h1>
+    <alert *ngIf="alerts.warning" [type]="'danger'" dismissible="true" (close)="closeAlert('warning')">
+        {{ alerts.warning }}
+    </alert>
+    <alert *ngIf="alerts.info" [type]="'success'" dismissible="true" (close)="closeAlert('info')">
+        {{ alerts.info }}
+    </alert>
+    <form (ngSubmit)="changeProfile()" #profileForm="ngForm" novalidate>
+
+        <div class="form-group row">
+            <div class="col-sm-12 col-md-4">
+                <label for="name">{{ tr?.name }}</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" #name="ngModel" placeholder="{{ tr?.name }}" />
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <label for="email">{{ tr?.email }}</label>
+                <input type="text" class="form-control" id="email" name="email" [ngModel]="model.email" #email="ngModel" placeholder="{{ tr?.email }}" disabled />
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <label for="role">{{ tr?.role }}</label>
+                <input type="text" class="form-control" id="role" name="role" [ngModel]="model.role" #role="ngModel" placeholder="{{ tr?.role }}" disabled />
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-md-12">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="chpassword" [(ngModel)]="model.chpassword"> {{ tr?.changePassword }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div [hidden]="!model.chpassword">
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="password">{{ tr?.password }}</label>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="{{ tr?.password }}" minlength="5" required />
+                    <div [hidden]="password.pristine" *ngIf="password.errors" class="alert alert-danger w-100">
+                        <p *ngIf="password.errors.required">{{ tr?.requiredTence("password") }}</p>
+                        <p *ngIf="password.errors.minlength">{{ tr?.minLengthTence("5") }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="newpassword">{{ tr?.newPassword }}</label>
+                    <input type="password" class="form-control" id="newpassword" name="newpassword" [(ngModel)]="model.newpassword" #newpassword="ngModel" placeholder="{{ tr?.newPassword }}" minlength="5" required />
+                    <div [hidden]="newpassword.pristine" *ngIf="newpassword.errors" class="alert alert-danger w-100">
+                        <p *ngIf="newpassword.errors.required">{{ tr?.requiredTence("newRassword") }}</p>
+                        <p *ngIf="newpassword.errors.minlength">{{ tr?.minLengthTence("5") }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="newrepassword">{{ tr?.newRepassword }}</label>
+                    <input type="password" class="form-control" id="newrepassword" name="newrepassword" [(ngModel)]="model.newrepassword" #newrepassword="ngModel" placeholder="{{ tr?.newRepassword }}" minlength="5" required />
+                    <div [hidden]="newrepassword.pristine" *ngIf="newrepassword.errors" class="alert alert-danger w-100">
+                        <p *ngIf="newrepassword.errors.required">{{ tr?.requiredTence("newRepassword") }}</p>
+                        <p *ngIf="newrepassword.errors.minlength">{{ tr?.minLengthTence("5") }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-default" [disabled]="!isValid()">{{ tr?.submit }}</button>
+            </div>
+        </div>
+    </form>
+</div>

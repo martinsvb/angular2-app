@@ -1,0 +1,45 @@
+<div class="container" *ngIf="showLink('module')">
+    <div class="row">
+        <div class="col-md-12">
+            <button [hidden]="showModule" class="btn btn-success pull-right" (click)="newModule()"><i class="fa fa-plus"></i> {{ tr?.create }}</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <alert *ngIf="alerts.warning" [type]="'danger'" dismissible="true" (close)="closeAlert('warning')">
+                {{ alerts.warning }}
+            </alert>
+            <alert *ngIf="alerts.info" [type]="'success'" dismissible="true" (close)="closeAlert('info')">
+                {{ alerts.info }}
+            </alert>
+        </div>
+    </div>
+
+    <module *ngIf="selectedModule && showModule" [module]="selectedModule" [action]="action" (moduleSubmit)="moduleSubmit($event)"></module>
+
+    <div *ngIf="modules && !showModule" class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ tr?.name }}</th>
+                    <th>{{ tr?.actions }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let module of modules; let i = index;">
+                    <td class="showPointer" (click)="showDescriptionChange(i)">{{ module?.name }} <i class="fa fa-info-circle" aria-hidden="true"></i><p class="text-muted" [hidden]="hideDescription(i)">{{ module?.description }}</p></td>
+                    <td>
+                        <button class="btn" [ngClass]="{'btn-success': module?.active, 'btn-danger': !module?.active}" (click)="moduleChange(i)">{{ tr?.active }}</button>
+                        <button class="btn btn-default" (click)="selectModule(module)"><i class="fa fa-pencil" aria-hidden="true"></i>{{ tr?.edit }}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+   <div [hidden]="modules" class="jumbotron">
+       <h2>{{ tr?.noModules }}</h2>
+   </div>
+
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+    
+    <h1>{{ tr?.login }}</h1>
+    <alert *ngIf="loginAlerts.loginWarning" [type]="'danger'" dismissible="true" (close)="closeAlert('loginWarning')">
+        {{ loginAlerts.loginWarning }}
+    </alert>
+    <alert *ngIf="loginAlerts.loginInfo" [type]="'success'" dismissible="true" (close)="closeAlert('loginInfo')">
+        {{ loginAlerts.loginInfo }}
+    </alert>
+    <form *ngIf="active" (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="model.email" #email="ngModel" placeholder="{{ tr?.email }}" pattern="([A-Za-z0-9]|-|_)+@[A-Za-z]+\.[A-Za-z]{2,}" required />
+                </div>
+                <div [hidden]="email.pristine" *ngIf="email.errors" class="alert alert-danger w-100">
+                    <p *ngIf="email.errors.required">{{ tr?.requiredTence("email") }}</p>
+                    <p *ngIf="email.errors.pattern">{{ tr?.patternTence("email") }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="{{ tr?.password }}" minlength="5" required />
+                </div>
+                <div [hidden]="password.pristine" *ngIf="password.errors" class="alert alert-danger w-100">
+                    <p *ngIf="password.errors.required">{{ tr?.requiredTence("password") }}</p>
+                    <p *ngIf="password.errors.minlength">{{ tr?.minLengthTence("5") }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">{{ tr?.submit }}</button>
+                <button class="btn btn-default pull-md-right" [routerLink]="['/register']">{{ tr?.register }}</button>
+            </div>
+        </div>
+    </form>
+</div>

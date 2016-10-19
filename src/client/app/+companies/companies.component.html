@@ -1,0 +1,47 @@
+<div class="container" *ngIf="showLink('company')">
+    <div class="row">
+        <div class="col-md-12">
+            <button [hidden]="showCompany" class="btn btn-success pull-right" (click)="newCompany()"><i class="fa fa-plus"></i> {{ tr?.create }}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <alert *ngIf="alerts.warning" [type]="'danger'" dismissible="true" (close)="closeAlert('warning')">
+                {{ alerts.warning }}
+            </alert>
+            <alert *ngIf="alerts.info" [type]="'success'" dismissible="true" (close)="closeAlert('info')">
+                {{ alerts.info }}
+            </alert>
+        </div>
+    </div>
+
+    <company *ngIf="selectedCompany && showCompany" [company]="selectedCompany" [action]="action" (compSubmit)="compSubmit($event)"></company>
+
+    <div *ngIf="companies && !showCompany" class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ tr?.name }}</th>
+                    <th>{{ tr?.email }}</th>
+                    <th>{{ tr?.actions }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies; let i = index;">
+                    <td>{{ company?.name }}</td>
+                    <td>{{ company?.email }}</td>
+                    <td>
+                        <button class="btn" [ngClass]="{'btn-success': company?.active, 'btn-danger': !company?.active}" (click)="compChange(i)">{{ tr?.active }}</button>
+                        <button class="btn btn-default" (click)="selectCompany(company)"><i class="fa fa-pencil" aria-hidden="true"></i>
+{{ tr?.edit }}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+   <div [hidden]="companies" class="jumbotron">
+       <h2>{{ tr?.noCompanies }}</h2>
+   </div>
+
+</div>

@@ -1,0 +1,47 @@
+<div class="container" *ngIf="showLink('role')">
+    <div class="row">
+        <div class="col-md-12">
+            <button [hidden]="showRole" class="btn btn-success pull-right" (click)="newRole()"><i class="fa fa-plus"></i> {{ tr?.create }}</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <alert *ngIf="alerts.warning" [type]="'danger'" dismissible="true" (close)="closeAlert('warning')">
+                {{ alerts.warning }}
+            </alert>
+            <alert *ngIf="alerts.info" [type]="'success'" dismissible="true" (close)="closeAlert('info')">
+                {{ alerts.info }}
+            </alert>
+        </div>
+    </div>
+
+    <role *ngIf="selectedRole && showRole" [role]="selectedRole" [action]="action" (roleSubmit)="roleSubmit($event)"></role>
+
+    <div *ngIf="roles && !showRole" class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ tr?.name }}</th>
+                    <th>{{ tr?.actions }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let role of roles; let i = index;">
+                    <td class="showPointer" (click)="showDescriptionChange(i)">{{ role?.name }} <i class="fa fa-info-circle" aria-hidden="true"></i>
+<p class="text-muted" [hidden]="hideDescription(i)">{{ role?.description }}</p></td>
+                    <td>
+                        <button class="btn" [ngClass]="{'btn-success': role?.active, 'btn-danger': !role?.active}" (click)="roleChange(i)">{{ tr?.active }}</button>
+                        <button class="btn btn-default" (click)="selectRole(role)"><i class="fa fa-pencil" aria-hidden="true"></i>
+{{ tr?.edit }}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+   <div [hidden]="roles" class="jumbotron">
+       <h2>{{ tr?.noRoles }}</h2>
+   </div>
+
+</div>

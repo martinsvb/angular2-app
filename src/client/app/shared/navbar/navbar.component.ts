@@ -12,7 +12,6 @@ import { TranslationComponent } from '../translation/translation.component';
   selector: 'navbar',
   templateUrl: 'navbar.component.html'
 })
-
 export class NavbarComponent {
 
     lang: string;

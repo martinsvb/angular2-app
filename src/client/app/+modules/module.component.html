@@ -1,0 +1,55 @@
+<div class="container" *ngIf="showLink('module')">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>{{ action=='update' ? tr?.edit : tr?.newF }} {{ tr?.module }}</h2>
+
+            <button class="btn btn-default pull-sm-right" (click)="list()"><i class="fa fa-angle-left" aria-hidden="true"></i> {{ tr?.list }}</button>
+        </div>
+    </div>
+
+    <alert *ngIf="alerts.warning" [type]="'danger'" dismissible="true" (close)="closeAlert('warning')">
+        {{ alerts.warning }}
+    </alert>
+    <alert *ngIf="alerts.info" [type]="'success'" dismissible="true" (close)="closeAlert('info')">
+        {{ alerts.info }}
+    </alert>
+
+    <form (ngSubmit)="onSubmit()" #moduleForm="ngForm" novalidate>
+
+        <div class="form-group row">
+            <div class="col-sm-12 col-md-4">
+                <label for="name">{{ tr?.name }}</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="module.name" #name="ngModel" placeholder="{{ tr?.name }}" />
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <p>{{ tr?.role }}</p>
+                <div class="form-check pull-left" *ngFor="let role of roles; let i = index">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="role.{{ role.name }}" [(ngModel)]="module.role[role.name]"><span class="form-check-span">{{ role.name }}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2">
+                <label>&nbsp;</label>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="active" [(ngModel)]="module.active"><span class="form-check-span">{{ tr?.active }}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <label for="description">{{ tr?.description }}</label>
+                <input type="text" class="form-control" id="description" name="description" [(ngModel)]="module.description" #description="ngModel" placeholder="{{ tr?.description }}" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-default" [disabled]="!moduleForm.form.valid">{{ tr?.submit }}</button>
+            </div>
+        </div>
+    </form>
+</div>

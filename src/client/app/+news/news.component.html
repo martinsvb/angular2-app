@@ -1,0 +1,104 @@
+<div class="container" *ngIf="showLink('news')">
+    
+    <div [hidden]="submitted">
+        <h1>{{ tr?.addNew }}</h1>
+        <form *ngIf="active" (ngSubmit)="onSubmit()" #newForm="ngForm" novalidate>
+            <div class="form-group row">
+                <div class="col-md-12"><label>{{ tr?.image }}</label></div>
+                <div class="col-md-12">
+                    <ng2-uploader [(ngModel)]="image" [ngModelOptions]="{standalone: true}" type="image" single hostUpload="{{hostUpload}}" uploadFolder="{{uploadFolder}}" uploadLabel="{{ tr?.upload }} {{ tr?.image }}" delLabel="{{ tr?.delete }} {{ tr?.image }}"></ng2-uploader>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-4">
+                    <input type="text" class="form-control" id="subject" name="subject" [(ngModel)]="model.subject" #subject="ngModel" placeholder="{{ tr?.subject }}" required />
+                    <div [hidden]="subject.valid || subject.pristine" class="alert alert-danger">
+                        {{ tr?.subject }} {{ tr?.is }}  {{ tr?.required }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <ng2-summernote [(ngModel)]="appendix" [ngModelOptions]="{standalone: true}" height="150" lang="cs-CZ" serverImgUp hostUpload="{{hostUpload}}" uploadFolder="{{uploadFolder}}"></ng2-summernote>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <ng2-summernote [(ngModel)]="content" [ngModelOptions]="{standalone: true}" height="600" lang="cs-CZ" serverImgUp hostUpload="{{hostUpload}}" uploadFolder="{{uploadFolder}}"></ng2-summernote>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12"><label>{{ tr?.gallery }}</label></div>
+                <div class="col-md-12">
+                    <ng2-uploader [(ngModel)]="gallery" [ngModelOptions]="{standalone: true}" type="image" hostUpload="{{hostUpload}}" uploadFolder="{{uploadFolder}}" uploadLabel="{{ tr?.upload }} {{ tr?.image }}" delLabel="{{ tr?.delete }} {{ tr?.image }}"></ng2-uploader>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12"><label>{{ tr?.attachments }}</label></div>
+                <div class="col-md-12">
+                    <ng2-uploader [(ngModel)]="attachments" [ngModelOptions]="{standalone: true}" type="file" hostUpload="{{hostUpload}}" uploadFolder="{{uploadFolder}}" uploadLabel="{{ tr?.upload }} {{ tr?.file }}" delLabel="{{ tr?.delete }} {{ tr?.file }}"></ng2-uploader>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-default" [disabled]="!newForm.form.valid">{{ tr?.submit }}</button>
+                    <button type="button" class="btn btn-default" (click)="addNew()">{{ tr?.addNew }}</button>
+                    <button type="button" class="btn btn-default" (click)="getAction()">get Action</button>
+                    <button type="button" class="btn btn-default" (click)="deleteAction()">delete Action</button>
+                    <button type="button" class="btn btn-default" (click)="postAction()">post Action</button>
+                    <button type="button" class="btn btn-default" (click)="putAction()">put Action</button>
+                </div>
+            </div>
+        </form>
+        <p>{{ model | json }}</p>
+        <p>{{ res | json }}</p>
+        <p>{{ _errorMessage | json }}</p>
+    </div>
+
+    <div [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <label>{{ tr?.subject }}</label>
+                    <p>{{ model.subject }}</p>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <label>{{ tr?.image }}</label>
+                    <p>{{ model.image | json }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>{{ tr?.appendix }}</label>
+                    <p>{{ model.appendix }}</p>
+                </div>
+
+                <div class="col-md-12">
+                    <label>{{ tr?.content }}</label>
+                    <p>{{ model.content }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <label>{{ tr?.gallery }}</label>
+                    <p>{{ model.gallery | json }}</p>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <label>{{ tr?.attachments }}</label>
+                    <p>{{ model.attachments | json }}</p>
+                </div>
+            </div>
+        <br>
+        <button class="btn btn-default" (click)="submitted=false">Edit</button>
+    </div>
+</div>

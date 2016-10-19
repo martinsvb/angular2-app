@@ -1,0 +1,148 @@
+<div class="container" *ngIf="showLink('user')">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>{{ action=='update' ? tr?.edit : tr?.newF }} {{ tr?.user }}</h2>
+
+            <button class="btn btn-default pull-sm-right" (click)="list()"><i class="fa fa-angle-left" aria-hidden="true"></i> {{ tr?.list }}</button>
+        </div>
+    </div>
+
+    <alert *ngIf="alerts.warning" [type]="'danger'" dismissible="true" (close)="closeAlert('warning')">
+        {{ alerts.warning }}
+    </alert>
+    <alert *ngIf="alerts.info" [type]="'success'" dismissible="true" (close)="closeAlert('info')">
+        {{ alerts.info }}
+    </alert>
+
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm" novalidate>
+
+        <div class="form-group row">
+            <div class="col-sm-12 col-md-4">
+                <label for="name">{{ tr?.name }}</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" #name="ngModel" placeholder="{{ tr?.name }}" />
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <label for="email">{{ tr?.email }}</label>
+                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" placeholder="{{ tr?.email }}" />
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <label for="role">{{ tr?.role }}</label>
+                <select class="form-control" id="role" [(ngModel)]="user.role" name="role">
+                    <option *ngFor="let role of roles;" [value]="role.name" [selected]="user.role == role.name">{{ role.name }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12 col-md-6">
+                <label for="comp_id">{{ tr?.company }}</label>
+                <select class="form-control" id="comp_id" [(ngModel)]="user.comp_id" name="comp_id">
+                    <option *ngFor="let company of companies;" [value]="company.id" [selected]="user.comp_id == company.id">{{ company.name }}</option>
+                </select>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <label>&nbsp;</label>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="active" [(ngModel)]="user.active"><span class="form-check-span">{{ tr?.active }}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <hr />
+
+        <h3>{{ tr?.modules }}</h3>
+
+        <div class="form-group row">
+            <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let module of modules; let i = index;">
+                <div *ngIf="loggedUser.modules[module.name]">
+                    <h4 class="blockEl">{{ module.name }}</h4>
+                    <div class="btn-group">
+                        <label class="btn btn-primary" name="modules.{{ module.name }}" [(ngModel)]="user.modules[module.name].read" #user.modules="ngModel" btnCheckbox>
+                            {{ tr?.read }} 
+                            <i class="fa fa-check" [ngClass]="{'fa-check': user.modules[module.name].read, 'fa-close': !user.modules[module.name].read}" aria-hidden="true"></i>
+                        </label>
+                        <label class="btn btn-primary" name="modules.{{ module.name }}" [(ngModel)]="user.modules[module.name].write" #user.modules="ngModel" btnCheckbox>
+                            {{ tr?.write }} 
+                            <i class="fa fa-check" [ngClass]="{'fa-check': user.modules[module.name].write, 'fa-close': !user.modules[module.name].write}" aria-hidden="true"></i>
+                        </label>
+                        <label class="btn btn-primary" name="modules.{{ module.name }}" [(ngModel)]="user.modules[module.name].del" #user.modules="ngModel" btnCheckbox>
+                            {{ tr?.del }} 
+                            <i class="fa fa-check" [ngClass]="{'fa-check': user.modules[module.name].del, 'fa-close': !user.modules[module.name].del}" aria-hidden="true"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+<p>{{loggedUser.modules | json}}</p>
+<p>{{modules | json}}</p>
+        <hr />
+        
+        <h3>{{ tr?.password }}</h3>
+        
+        <div *ngIf="action=='create'">
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="password">{{ tr?.password }}</label>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" placeholder="{{ tr?.password }}" minlength="5" required />
+                    <div [hidden]="password.pristine" *ngIf="password.errors" class="alert alert-danger w-100">
+                        <p *ngIf="password.errors.required">{{ tr?.requiredTence("newRassword") }}</p>
+                        <p *ngIf="password.errors.minlength">{{ tr?.minLengthTence("5") }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="repassword">{{ tr?.repassword }}</label>
+                    <input type="password" class="form-control" id="repassword" name="repassword" [(ngModel)]="user.repassword" #repassword="ngModel" placeholder="{{ tr?.repassword }}" minlength="5" required />
+                    <div [hidden]="repassword.pristine" *ngIf="repassword.errors" class="alert alert-danger w-100">
+                        <p *ngIf="repassword.errors.required">{{ tr?.requiredTence("repassword") }}</p>
+                        <p *ngIf="repassword.errors.minlength">{{ tr?.minLengthTence("5") }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row" *ngIf="action=='update'">
+            <div class="col-md-12">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="chpassword" [(ngModel)]="user.chpassword"> {{ tr?.changePassword }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="action=='update' && user.chpassword">
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="newpassword">{{ tr?.newPassword }}</label>
+                    <input type="password" class="form-control" id="newpassword" name="newpassword" [(ngModel)]="user.newpassword" #newpassword="ngModel" placeholder="{{ tr?.newPassword }}" minlength="5" required />
+                    <div [hidden]="newpassword.pristine" *ngIf="newpassword.errors" class="alert alert-danger w-100">
+                        <p *ngIf="newpassword.errors.required">{{ tr?.requiredTence("newRassword") }}</p>
+                        <p *ngIf="newpassword.errors.minlength">{{ tr?.minLengthTence("5") }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="newrepassword">{{ tr?.newRepassword }}</label>
+                    <input type="password" class="form-control" id="newrepassword" name="newrepassword" [(ngModel)]="user.newrepassword" #newrepassword="ngModel" placeholder="{{ tr?.newRepassword }}" minlength="5" required />
+                    <div [hidden]="newrepassword.pristine" *ngIf="newrepassword.errors" class="alert alert-danger w-100">
+                        <p *ngIf="newrepassword.errors.required">{{ tr?.requiredTence("newRepassword") }}</p>
+                        <p *ngIf="newrepassword.errors.minlength">{{ tr?.minLengthTence("5") }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-default" [disabled]="!userForm.form.valid">{{ tr?.submit }}</button>
+            </div>
+        </div>
+    </form>
+</div>

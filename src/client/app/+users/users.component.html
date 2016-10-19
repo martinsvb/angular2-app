@@ -1,0 +1,52 @@
+<div class="container" *ngIf="showLink('user')">
+    <div class="row">
+        <div class="col-md-12">
+            <button [hidden]="showUser" class="btn btn-success pull-right" (click)="newUser()"><i class="fa fa-plus"></i> {{ tr?.create }}</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <alert *ngIf="alerts.warning" [type]="'danger'" dismissible="true" (close)="closeAlert('warning')">
+                {{ alerts.warning }}
+            </alert>
+            <alert *ngIf="alerts.info" [type]="'success'" dismissible="true" (close)="closeAlert('info')">
+                {{ alerts.info }}
+            </alert>
+        </div>
+    </div>
+
+    <user *ngIf="selectedUser && showUser" [user]="selectedUser" [action]="action" (userSubmit)="userSubmit($event)"></user>
+
+    <div *ngIf="users && !showUser" class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ tr?.name }}</th>
+                    <th>{{ tr?.company }}</th>
+                    <th>{{ tr?.email }}</th>
+                    <th>{{ tr?.role }}</th>
+                    <th>{{ tr?.actions }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; let i = index;">
+                    <td>{{ user?.name }}</td>
+                    <td>{{ user?.comp_name }}</td>
+                    <td>{{ user?.email }}</td>
+                    <td>{{ user?.role }}</td>
+                    <td>
+                        <button class="btn" [ngClass]="{'btn-success': user?.active, 'btn-danger': !user?.active}" (click)="userChange(i)">{{ tr?.active }}</button>
+                        <button class="btn btn-default" (click)="selectUser(user)"><i class="fa fa-pencil" aria-hidden="true"></i>
+{{ tr?.edit }}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+   <div [hidden]="users" class="jumbotron">
+       <h2>{{ tr?.nousers }}</h2>
+   </div>
+
+</div>

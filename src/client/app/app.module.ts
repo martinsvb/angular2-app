@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -38,7 +38,8 @@ import { routes } from './app.routes';
     AppConfig,
     AppRequest,
     CacheComponent,
-    TranslationComponent
+    TranslationComponent,
+    NavbarComponent
   ],
   bootstrap: [AppComponent]
 })
