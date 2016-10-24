@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../shared/navbar/index';
-import { CacheComponent } from '../shared/cache/cache.component';
 import { TranslationComponent } from '../shared/translation/translation.component';
-import { AppRequest } from '../shared/index';
+import { CacheComponent } from '../shared/cache/cache.component';
+import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { CompanyModel } from './company.interface';
 import { CompanyComponent } from './company.component';
+import { AlertComponent } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
     moduleId: module.id,
     selector: 'companies',
-    templateUrl: 'companies.component.html'
+    templateUrl: 'companies.component.html',
+    providers: []
 })
 export class CompaniesComponent {
   

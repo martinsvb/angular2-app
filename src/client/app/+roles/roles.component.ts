@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../shared/navbar/index';
-import { CacheComponent } from '../shared/cache/cache.component';
+import { CORE_DIRECTIVES } from '@angular/common';
+import { AppConfig, AppRequest } from '../shared/index';
 import { TranslationComponent } from '../shared/translation/translation.component';
-import { AppRequest } from '../shared/index';
+import { CacheComponent } from '../shared/cache/cache.component';
+import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { RoleComponent } from './role.component';
 import { RoleModel } from './role.interface';
+import { AlertComponent } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
     moduleId: module.id,
     selector: 'roles',
-    templateUrl: 'roles.component.html'
+    templateUrl: 'roles.component.html',
+    providers: [AppConfig, AppRequest, NavbarComponent],
+    directives: [CORE_DIRECTIVES, RoleComponent, AlertComponent]
 })
 export class RolesComponent {
   

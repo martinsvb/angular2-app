@@ -1,11 +1,9 @@
-import { NgModule, Provider } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { Ng2BootstrapModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { NavbarComponent } from './shared/navbar/index';
 import { CacheComponent } from './shared/cache/cache.component';
@@ -13,22 +11,25 @@ import { TranslationComponent } from './shared/translation/translation.component
 import { AppConfig, AppRequest } from './shared/index';
 
 import { AppComponent } from './app.component';
-import { AppComponents } from './app.components';
 import { routes } from './app.routes';
+
+import { 
+  AlertComponent,
+  AccordionComponent
+} from 'ng2-bootstrap/ng2-bootstrap';
+
+import { HomeModule } from './+home/home.module';
 
 @NgModule({
   imports: [
-    BrowserModule,
-    HttpModule,
-    RouterModule.forRoot(routes),
-    FormsModule,
-    ReactiveFormsModule,
-    Ng2BootstrapModule
+    BrowserModule, HttpModule, RouterModule.forRoot(routes), FormsModule, ReactiveFormsModule,
+    HomeModule
   ],
   declarations: [
-    NavbarComponent,
-    AppComponent,
-    ...AppComponents
+    AccordionComponent,
+    AlertComponent,
+    NavbarComponent,    
+    AppComponent
   ],
   providers: [
     {
@@ -37,10 +38,11 @@ import { routes } from './app.routes';
     },
     AppConfig,
     AppRequest,
+    NavbarComponent,
     CacheComponent,
-    TranslationComponent,
-    NavbarComponent
+    TranslationComponent
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+
+export class AppModule { }

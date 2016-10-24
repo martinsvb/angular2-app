@@ -1,14 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NavbarComponent } from '../shared/navbar/index';
-import { CacheComponent } from '../shared/cache/cache.component';
-import { TranslationComponent } from '../shared/translation/translation.component';
-import { AppRequest } from '../shared/index';
+import { NgForm } from '@angular/forms';
+import { AppConfig, AppRequest } from '../shared/index';
 import { RoleModel } from './role.interface';
+import { TranslationComponent } from '../shared/translation/translation.component';
+import { CacheComponent } from '../shared/cache/cache.component';
+import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { AlertComponent } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   moduleId: module.id,
   selector: 'role',
-  templateUrl: 'role.component.html'
+  templateUrl: 'role.component.html',
+  directives: [AlertComponent],
+  providers: [AppConfig, AppRequest, NavbarComponent]
 })
 export class RoleComponent {
   

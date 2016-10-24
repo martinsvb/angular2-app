@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../shared/navbar/index';
+import { NgForm } from '@angular/forms';
+import { Ng2Summernote } from 'ng2-summernote/ng2-summernote';
+import { AppConfig, AppRequest } from '../shared/index';
 import { CacheComponent } from '../shared/cache/cache.component';
 import { TranslationComponent } from '../shared/translation/translation.component';
-import { AppConfig, AppRequest } from '../shared/index';
 import { RegisterModel } from './register.interface';
+import { AlertComponent } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   moduleId: module.id,
   selector: 'sd-register',
-  templateUrl: 'register.component.html'
+  templateUrl: 'register.component.html',
+  directives: [AlertComponent],
+  providers: [AppConfig, AppRequest]
 })
 
 export class RegisterComponent {

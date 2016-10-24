@@ -14,24 +14,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
-    "noFallthroughCasesInSwitch": true,
-    "typeRoots": [
-      "../../node_modules/@types",
-      "../../node_modules"
-    ],
-    "types": [
-      "core-js",
-      "express",
-      "jasmine",
-      "node",
-      "protractor",
-      "systemjs"
-    ]
+    "noFallthroughCasesInSwitch": true
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "src"
-  ],
   "compileOnSave": false
 }

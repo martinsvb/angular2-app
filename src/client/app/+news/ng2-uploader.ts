@@ -4,24 +4,28 @@ import {
   Output,
   EventEmitter,
   NgZone,
+  Provider,
   forwardRef
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Http, Headers, RequestOptions} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
 declare var $: any;
 
+// Control Value accessor provider
+const NG2UPLOADER_CONTROL_VALUE_ACCESSOR = new Provider(
+  NG_VALUE_ACCESSOR,
+  {
+    useExisting: forwardRef(() => Ng2Uploader),
+    multi: true
+  }
+);
+
 @Component({
   selector: 'ng2-uploader',
-  providers: [
-    {
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => Ng2Uploader),
-        multi: true
-    }
-  ],
+  providers: [NG2UPLOADER_CONTROL_VALUE_ACCESSOR],
   styles: [`
     label.uploader input[type="file"] {
         position: fixed;

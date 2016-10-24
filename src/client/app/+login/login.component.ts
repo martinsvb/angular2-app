@@ -1,15 +1,19 @@
 import { Component, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { NavbarComponent } from '../shared/navbar/index';
-import { CacheComponent } from '../shared/cache/cache.component';
+import { NgForm } from '@angular/forms';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Ng2Summernote } from 'ng2-summernote/ng2-summernote';
+import { AppConfig, AppRequest } from '../shared/index';
 import { TranslationComponent } from '../shared/translation/translation.component';
-import { AppRequest } from '../shared/index';
+import { CacheComponent } from '../shared/cache/cache.component';
 import { LoginModel } from './login.interface';
+import { AlertComponent } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   moduleId: module.id,
   selector: 'sd-login',
-  templateUrl: 'login.component.html'
+  templateUrl: 'login.component.html',
+  directives: [ROUTER_DIRECTIVES, AlertComponent],
+  providers: [AppConfig, AppRequest]
 })
 export class LoginComponent {
   

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-
-import { CacheComponent } from '../shared/cache/cache.component';
 import { TranslationComponent } from '../shared/translation/translation.component';
+import { CacheComponent } from '../shared/cache/cache.component';
 
 /**
  * This class represents the lazy loaded HomeComponent.

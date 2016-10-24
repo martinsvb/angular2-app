@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AppConfig, AppRequest } from '../shared/index';
 import { UserModel } from '../+users/user.interface';
-import { NavbarComponent } from '../shared/navbar/index';
-import { CacheComponent } from '../shared/cache/cache.component';
 import { TranslationComponent } from '../shared/translation/translation.component';
-import { AppRequest } from '../shared/index';
+import { CacheComponent } from '../shared/cache/cache.component';
+import { AlertComponent } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   moduleId: module.id,
   selector: 'sd-profile',
-  templateUrl: 'profile.component.html'
+  templateUrl: 'profile.component.html',
+  directives: [AlertComponent],
+  providers: [AppConfig, AppRequest]
 })
 export class ProfileComponent {
   

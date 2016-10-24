@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="showLink('docs')">
   <accordion *ngFor='let namespace of namespaces' [closeOthers]="true">
     <accordion-group *ngFor='let namespaceClass of docs[namespace]' [isOpen]="false">
 

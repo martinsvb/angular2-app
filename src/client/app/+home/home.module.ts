@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [HomeComponent],
-  exports: [HomeComponent]
+  exports: [HomeComponent],
+  providers: []
 })
-export class HomeModule {}
+export class HomeModule { }

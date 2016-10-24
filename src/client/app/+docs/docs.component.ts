@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
 import { DocsService } from './docs.service';
+import { AppConfig } from '../shared/index';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { AlertComponent, AccordionComponent } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   moduleId: module.id,
   selector: 'sd-docs',
   templateUrl: 'docs.component.html',
-  providers: [DocsService, NavbarComponent]
+  providers: [AppConfig, DocsService, NavbarComponent]
 })
 
 export class DocsComponent {
@@ -15,10 +17,7 @@ export class DocsComponent {
   error: any;
   namespaces: any;
 
-  constructor (
-    private DocsService: DocsService,
-    private _nav: NavbarComponent
-  ) {}
+  constructor(private DocsService: DocsService, private _nav: NavbarComponent) {}
 
   getDocs() {
     this.DocsService

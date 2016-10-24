@@ -1,17 +1,21 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AppConfig, AppRequest } from '../shared/index';
 import { UserModel } from './user.interface';
 import { CompanyModel } from '../+companies/company.interface';
 import { ModuleModel } from '../+modules/module.interface';
 import { RoleModel } from '../+roles/role.interface';
-import { NavbarComponent } from '../shared/navbar/index';
-import { CacheComponent } from '../shared/cache/cache.component';
 import { TranslationComponent } from '../shared/translation/translation.component';
-import { AppRequest } from '../shared/index';
+import { CacheComponent } from '../shared/cache/cache.component';
+import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { AlertComponent, BUTTON_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   moduleId: module.id,
   selector: 'user',
-  templateUrl: 'user.component.html'
+  templateUrl: 'user.component.html',
+  directives: [AlertComponent, BUTTON_DIRECTIVES],
+  providers: [AppConfig, AppRequest, NavbarComponent]
 })
 export class UserComponent {
   

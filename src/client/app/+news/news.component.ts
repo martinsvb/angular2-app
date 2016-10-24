@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Ng2Summernote } from 'ng2-summernote/ng2-summernote';
 import { Ng2Uploader } from './ng2-uploader';
-import { NavbarComponent } from '../shared/navbar/index';
-import { CacheComponent } from '../shared/cache/cache.component';
-import { TranslationComponent } from '../shared/translation/translation.component';
 import { AppConfig, AppRequest } from '../shared/index';
+import { CacheComponent } from '../shared/cache/cache.component';
+import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { NewModel } from './news.interface';
+import { TranslationComponent } from '../shared/translation/translation.component';
 
 @Component({
   moduleId: module.id,
   selector: 'sd-news',
   templateUrl: 'news.component.html',
-  providers: [Ng2Summernote, Ng2Uploader]
+  directives: [Ng2Summernote, Ng2Uploader],
+  providers: [AppConfig, AppRequest, NavbarComponent]
 })
+
 export class NewsComponent {
   
   private _module = "news";

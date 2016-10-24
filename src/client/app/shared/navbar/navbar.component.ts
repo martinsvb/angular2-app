@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { CacheComponent } from '../cache/cache.component';
 import { TranslationComponent } from '../translation/translation.component';
+import { CacheComponent } from '../cache/cache.component';
 
 /**
  * This class represents the navigatin bar component.
  */
 @Component({
   moduleId: module.id,
-  selector: 'navbar',
+  selector: 'sd-navbar',
   templateUrl: 'navbar.component.html'
 })
+
 export class NavbarComponent {
 
     lang: string;
